@@ -1,0 +1,115 @@
+#! dircolors.gen
+#! Source file to generate .dircolors through awk.
+#! Comment lines starting with #! will be removed.
+#
+# .dircolors
+#
+# User configuration file for `dircolors` utility.
+# To output command to set LS_COLORS variable use:
+# $ /usr/bin/dircolors [OPTIONS] [THIS_FILE]
+
+
+# Colorization switch:
+#  'tty'  colorizes output to ttys, but not pipes.
+#  'all'  adds color characters to all output.
+#  'none' shuts colorization off.
+COLOR tty
+
+# Extra command line options for `ls` go here.
+# Basically these ones are:
+#  -N   raw entry names
+#  -F   show '/' for dirs, '*' for executables, etc.
+#  -T 0 don't trust tab spacing when formatting ls output.
+#  -b   better support for special characters
+OPTIONS -N -b -T 0
+
+# 8-bit output: '1' for on, '0' for off.
+EIGHTBIT 1
+
+
+## TERM Section
+#  List of all colorizable terminals.
+$TERMS Eterm:ansi:color-xterm:con[0-9]*x[0-9]*:cons25:console:cygwin:dtterm:eterm-color:gnome:gnome-256color:hurd:jfbterm:konsole:kterm:linux:linux-c:mach-color:mach-gnu-color:mlterm:putty:putty-256color:rxvt*:screen*:st:st-256color:terminator:tmux*:vt100:xterm*
+
+
+## Color Section
+#  Below are the color for the basic file types.
+#  Color must be valid ANSI color code.
+
+#! Preprocessor can convert litteral color string to codes.
+#! Syntax: [ATTR;]*FGCOLOR,BGCOLOR
+
+## By type
+
+RESET  none
+NORMAL normal                  # plain text
+FILE   normal                  # regular file
+DIR    black,white             # directory
+LINK   underlined;bright;cyan  # symbolic link
+FIFO   bright;white,cyan       # pipe
+SOCK   bright;white,red        # socket
+DOOR   bright;white,yellow     # door (Solaris 2.5+)
+BLK    bright;red,black        # block device
+CHR    bright;yellow,black     # char device
+
+
+## By attributes
+
+ORPHAN  underlined;blink;bright;red  # symlink to nonexistent file, or non-stat'able file
+MISSING            blink;bold        # ...and the files that orphaned symlinks point to
+
+#SETUID      ? # file that is setuid (u+s)
+#SETGID      ? # file that is setgid (g+s)
+#CAPABILITY  ? # file with capability
+
+# Directories (mostly override 'DIR' on FAT/NTFS)
+STICKY_OTHER_WRITABLE underlined;black,white  # dir that is sticky and other-writable (+t,o+w)
+OTHER_WRITABLE        underlined;black,white  # dir that is other-writable (o+w) and not sticky
+STICKY                underlined;black,white  # dir with the sticky bit set (+t) and not other-writable
+
+# Files with execute permission (+x)
+EXEC   none   # Disabled because of FAT/NTFS mess
+
+
+## By extension
+#  List of file extensions `ls` must colorize.
+#  Syntax: EXT [[:space:]]+ ANSI;COLOR;CODE
+
+#! Preprocessor can expand some keywords.
+#! Syntax: $KWD [[:space:]]+ color;string
+
+# Executables, even if they're not (a-x)
+# DOS-style suffixes
+$EXE   underlined;bright,green
+
+# UNIX scripts
+$SH    underlined;bright,red
+
+# Archives, compressed
+$ZIP   black,yellow
+
+# Text formats
+$TXT   normal
+
+# Source files
+$DEV   green
+
+# Config
+$CFG   yellow
+
+# Images
+$IMG   cyan
+
+# Audio
+$AUD   yellow
+
+# Video
+$VID   magenta
+
+# Documents
+$DOC   blue
+
+# Unimportant files
+$LOG   normal;white
+*~     normal;white
+*#     normal;white

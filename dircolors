@@ -1,0 +1,298 @@
+#
+# .dircolors
+#
+# User configuration file for `dircolors` utility.
+# To output command to set LS_COLORS variable use:
+# $ /usr/bin/dircolors [OPTIONS] [THIS_FILE]
+
+
+# Colorization switch:
+#  'tty'  colorizes output to ttys, but not pipes.
+#  'all'  adds color characters to all output.
+# '0' shuts colorization off.
+COLOR tty
+
+# Extra command line options for `ls` go here.
+# Basically these ones are:
+#  -N   raw entry names
+#  -F   show '/' for dirs, '*' for executables, etc.
+#  -T 0 don't trust tab spacing when formatting ls output.
+#  -b   better support for special characters
+OPTIONS -N -b -T 0
+
+# 8-bit output: '1' for on, '0' for off.
+EIGHTBIT 1
+
+
+## TERM Section
+#  List of all colorizable terminals.
+TERM Eterm
+TERM ansi
+TERM color-xterm
+TERM con[0-9]*x[0-9]*
+TERM cons25
+TERM console
+TERM cygwin
+TERM dtterm
+TERM eterm-color
+TERM gnome
+TERM gnome-256color
+TERM hurd
+TERM jfbterm
+TERM konsole
+TERM kterm
+TERM linux
+TERM linux-c
+TERM mach-color
+TERM mach-gnu-color
+TERM mlterm
+TERM putty
+TERM putty-256color
+TERM rxvt*
+TERM screen*
+TERM st
+TERM st-256color
+TERM terminator
+TERM tmux*
+TERM vt100
+TERM xterm*
+
+
+
+## Color Section
+#  Below are the color for the basic file types.
+#  Color must be valid ANSI color code.
+
+
+## By type
+
+RESET 0
+NORMAL 0 # plain text
+FILE 0 # regular file
+DIR 30;47 # directory
+LINK 4;1;36 # symbolic link
+FIFO 1;37;46 # pipe
+SOCK 1;37;41 # socket
+DOOR 1;37;43 # door (Solaris 2.5+)
+BLK 1;31;40 # block device
+CHR 1;33;40 # char device
+
+
+## By attributes
+
+ORPHAN 4;5;1;31 # symlink to nonexistent file, or non-stat'able file
+MISSING 5;1 # ...and the files that orphaned symlinks point to
+
+#SETUID      ? # file that is setuid (u+s)
+#SETGID      ? # file that is setgid (g+s)
+#CAPABILITY  ? # file with capability
+
+# Directories (mostly override 'DIR' on FAT/NTFS)
+STICKY_OTHER_WRITABLE 4;30;47 # dir that is sticky and other-writable (+t,o+w)
+OTHER_WRITABLE 4;30;47 # dir that is other-writable (o+w) and not sticky
+STICKY 4;30;47 # dir with the sticky bit set (+t) and not other-writable
+
+# Files with execute permission (+x)
+EXEC 0 # Disabled because of FAT/NTFS mess
+
+
+## By extension
+#  List of file extensions `ls` must colorize.
+#  Syntax: EXT [[:space:]]+ ANSI;COLOR;CODE
+
+
+# Executables, even if they're not (a-x)
+# DOS-style suffixes
+.cmd   4;1;42
+.exe   4;1;42
+.EXE   4;1;42
+.com   4;1;42
+.bat   4;1;42
+.BAT   4;1;42
+.reg   4;1;42
+.app   4;1;42
+
+
+# UNIX scripts
+.sh    4;1;41
+.csh   4;1;41
+.zhs   4;1;41
+
+
+# Archives, compressed
+.apk   30;43
+.arj   30;43
+.bin   30;43
+.bz    30;43
+.bz2   30;43
+.cab   30;43
+.deb   30;43
+.dmg   30;43
+.gem   30;43
+.gz    30;43
+.iso   30;43
+.jar   30;43
+.msi   30;43
+.rar   30;43
+.rpm   30;43
+.tar   30;43
+.tbz   30;43
+.tbz2  30;43
+.tgz   30;43
+.tx    30;43
+.war   30;43
+.xpi   30;43
+.xz    30;43
+.z     30;43
+.zip   30;43
+
+
+# Text formats
+.txt   0
+.TXT   0
+.org   0
+.md    0
+.mkd   0
+
+
+# Source files
+.h     32
+.c     32
+.cc    32
+.cxx   32
+.objc  32
+.el    32
+.vim   32
+.java  32
+.pl    32
+.pm    32
+.py    32
+.rb    32
+.hs    32
+.php   32
+.htm   32
+.html  32
+.xml   32
+.rdf   32
+.css   32
+.js    32
+.man   32
+.pod   32
+.tex   32
+.awk   32
+.sed   32
+
+
+# Config
+.conf  33
+.cfg   33
+.ini   33
+.INI   33
+.pacnew 33
+
+
+# Images
+.bmp   36
+.cgm   36
+.dl    36
+.dvi   36
+.emf   36
+.eps   36
+.gif   36
+.jpeg  36
+.jpg   36
+.mng   36
+.pbm   36
+.pcx   36
+.pgm   36
+.png   36
+.ppm   36
+.pps   36
+.ppsx  36
+.ps    36
+.psd   36
+.svg   36
+.svgz  36
+.tga   36
+.tif   36
+.tiff  36
+.xbm   36
+.xcf   36
+.xpm   36
+.xwd   36
+.xwd   36
+.yuv   36
+
+
+# Audio
+.aac   33
+.au    33
+.flac  33
+.mid   33
+.midi  33
+.mka   33
+.mp3   33
+.mpa   33
+.mpeg  33
+.mpg   33
+.ogg   33
+.ra    33
+.wav   33
+
+
+# Video
+.anx   35
+.asf   35
+.avi   35
+.axv   35
+.flc   35
+.fli   35
+.flv   35
+.gl    35
+.m2v   35
+.m4v   35
+.mkv   35
+.mov   35
+.mp4   35
+.mp4v  35
+.mpeg  35
+.mpg   35
+.nuv   35
+.ogm   35
+.ogv   35
+.ogx   35
+.qt    35
+.rm    35
+.rmvb  35
+.swf   35
+.vob   35
+.wmv   35
+
+
+# Documents
+.doc   34
+.docx  34
+.rtf   34
+.dot   34
+.dotx  34
+.xls   34
+.xlsx  34
+.ppt   34
+.pptx  34
+.fla   34
+.pdf   34
+
+
+# Unimportant files
+.0     0;37
+.log   0;37
+.bak   0;37
+.old   0;37
+.off   0;37
+.dist  0;37
+.orig  0;37
+.swp   0;37
+.swo   0;37
+
+*~ 0;37
+*# 0;37
