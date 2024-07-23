@@ -1,27 +1,12 @@
 #
 # .dircolors
 #
-# User configuration file for `dircolors` utility.
+# User configuration file for dircolors(1) utility.
 # To output command to set LS_COLORS variable use:
-# $ /usr/bin/dircolors [OPTIONS] [THIS_FILE]
+# /usr/bin/dircolors [OPTIONS] THIS_FILE
 
-
-# Colorization switch:
-#  'tty'  colorizes output to ttys, but not pipes.
-#  'all'  adds color characters to all output.
-# '0' shuts colorization off.
-COLOR tty
-
-# Extra command line options for `ls` go here.
-# Basically these ones are:
-#  -N   raw entry names
-#  -F   show '/' for dirs, '*' for executables, etc.
-#  -T 0 don't trust tab spacing when formatting ls output.
-#  -b   better support for special characters
-OPTIONS -N -b -T 0
-
-# 8-bit output: '1' for on, '0' for off.
-EIGHTBIT 1
+## This file is generated through dircolors.gen ##
+##   source:                                    ##
 
 
 ## TERM Section
@@ -145,6 +130,7 @@ EXEC 0 # Disabled because of FAT/NTFS mess
 .xz    30;43
 .z     30;43
 .zip   30;43
+.zst   30;43
 
 
 # Text formats
@@ -189,6 +175,7 @@ EXEC 0 # Disabled because of FAT/NTFS mess
 .ini   33
 .INI   33
 .pacnew 33
+.yaml  33
 
 
 # Images

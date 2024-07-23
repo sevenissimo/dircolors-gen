@@ -22,18 +22,33 @@ function each(keyword, str) {
 # Main
 # Convert litteral color strings to ANSI color codes.
 {
-	# Attribute codes
+	# Text attributes
 	sub(/(normal|default|none)/, "0", $2)
 	sub(/(bold|bright)/,         "1", $2)
 	sub(/under(score|lined?)/,   "4", $2)
-	sub(/(blink|warn|alert)/,    "5", $2)
+	sub(/(blink|alert)/,         "5", $2)
 	sub(/reversed/,              "7", $2)
 	sub(/concealed/,             "8", $2) # WTF is that?
 
-	# Background color {40..47}
+	# 24-bit RGB colors
+	if ($2~/rgb/) {
+		 sub(",rgb(", "48;2;", $2) # Background
+		 sub( "rgb(", "38;2;", $2) # Foreground
+		gsub(    ",",     ";", $2)
+		gsub(    ")",     ";", $2)
+	}
+
+	# 8-bit 256 colors
+	if ($2~/esc/) {
+		 sub(",esc(", "48;5;", $2) # Background
+		 sub( "esc(", "38;5;", $2) # Foreground
+		gsub(    ")",     ";", $2)
+	}
+
+	# 4-bit background colors {40..47}
 	for (i in colors) sub(","colors[i], ";"(39+i), $2)
 
-	# Text color codes {30..37}
+	# 4-bit text color codes {30..37}
 	for (i in colors) sub(colors[i], (29+i), $2)
 }
 
@@ -42,10 +57,10 @@ function each(keyword, str) {
 	     if (/\$TERMS/) each("TERM")
 	else if (/\$SH/)  expand("sh:csh:zhs")
 	else if (/\$TXT/) expand("txt:TXT:org:md:mkd")
-	else if (/\$CFG/) expand("conf:cfg:ini:INI:pacnew")
+	else if (/\$CFG/) expand("conf:cfg:ini:INI:pacnew:yaml")
 	else if (/\$EXE/) expand("cmd:exe:EXE:com:bat:BAT:reg:app")
 	else if (/\$DEV/) expand("h:c:cc:cxx:objc:el:vim:java:pl:pm:py:rb:hs:php:htm:html:xml:rdf:css:js:man:pod:tex:awk:sed")
-	else if (/\$ZIP/) expand("apk:arj:bin:bz:bz2:cab:deb:dmg:gem:gz:iso:jar:msi:rar:rpm:tar:tbz:tbz2:tgz:tx:war:xpi:xz:z:zip")
+	else if (/\$ZIP/) expand("apk:arj:bin:bz:bz2:cab:deb:dmg:gem:gz:iso:jar:msi:rar:rpm:tar:tbz:tbz2:tgz:tx:war:xpi:xz:z:zip:zst")
 	else if (/\$IMG/) expand("bmp:cgm:dl:dvi:emf:eps:gif:jpeg:jpg:mng:pbm:pcx:pgm:png:ppm:pps:ppsx:ps:psd:svg:svgz:tga:tif:tiff:xbm:xcf:xpm:xwd:xwd:yuv")
 	else if (/\$AUD/) expand("aac:au:flac:mid:midi:mka:mp3:mpa:mpeg:mpg:ogg:ra:wav")
 	else if (/\$VID/) expand("anx:asf:avi:axv:flc:fli:flv:gl:m2v:m4v:mkv:mov:mp4:mp4v:mpeg:mpg:nuv:ogm:ogv:ogx:qt:rm:rmvb:swf:vob:wmv")
